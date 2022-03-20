@@ -2,14 +2,23 @@
 记录一下用zerotier上外网的优缺点
 
 ## Introduction
-[zerotier](https://www.zerotier.com/) 是一个搭建虚拟局域网的工具。具体来说是将多个连上了互联网但是不在一个局域网的电脑连在一个局域网里。可以用来搭建搭VPN，远程控制（配合[nomachine](https://www.nomachine.com/)），联机游戏（如minecraft），访问家庭NAS等。zerotier最大的特点是P2P链接，不需要一个中间服务器转发流量（但是需要zerotier的根服务器做NAT，类似于DNS），或者是一个公网IP。所以通常来说这是一个快速且便宜的方案。
+[zerotier](https://www.zerotier.com/) 是一个搭建虚拟局域网的工具。它可以将多个连上了互联网但是不在一个局域网的电脑连在同一个虚拟局域网里。
+具体用途上它，可以用来搭建搭VPN，远程桌面（配合[NoMachine](https://www.nomachine.com/)），游戏联机（如minecraft），访问家庭NAS等。zerotier最大的特点是P2P链接，不需要一个中间服务器转发流量，或者是一个公网IP(但是需要zerotier的根服务器做NAT，类似于DNS)。所以通常来说这是一个快速且便宜的方案。
 
 ## deploy
-参考https://github.com/aturl/awesome-anti-gfw/blob/master/ZeroTier/ZeroTier's_VPN.md
+此项目参考https://github.com/aturl/awesome-anti-gfw/blob/master/ZeroTier/ZeroTier's_VPN.md
+写了一个简单的python脚本。只需要用户输入自己的zerotier的局域网代码。 （需要root权限）
 
-计划写一个脚本自动化这个过程，应该只需要用户输入一个zerotier的局域网代码。需要root权限。
+使用方法：
+···
+apt install -y git python3
+git clone https://github.com/ricardodong/zerotier-vpn-note.git
+cd zerotier-vpn-note
+python3 script.py
+···
 
 如果想要搭建planet服务器来彻底不依赖zerotier的根服务器，可以用现成的docker，参考https://post.smzdm.com/p/apxkx2m7/
+也有一键脚本可用。
 
 ## Advantage
 0. 不需要公网IP。也就是说，在墙外任何地方，只要你有一台，联网，不关机，可操作的电脑，就能当作服务器。不一定需要租一台虚拟主机，或是申请公网IP。
