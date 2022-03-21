@@ -2,7 +2,7 @@ import os
 
 # install and join zerotier network
 os.system("curl -s https://install.zerotier.com | sudo bash")
-zerotier_network_id = input("Please enter your Network ID (a 16 character string):\n")
+zerotier_network_id = input("请输入你的zerotier 网络 ID (一串16位的字母数字):\n")
 os.system("zerotier-cli join " + zerotier_network_id)
 
 # enable ip forward
@@ -11,12 +11,12 @@ network_config_file.write("net.ipv4.ip_forward = 1\n")
 network_config_file.close()
 os.system("sysctl -p")
 
-# find network
+# find networks
 server_networks = os.popen("ip link show", 'r', 1)
 networks = server_networks.readlines()
 zerotier_net = internet_net = ''
 if len(networks) > 6:
-    print("too many networks! can't decide!")
+    print("太多网络了！无法确定互联网连接")
     assert False
 for net in networks:
     if 'link/' in net:
@@ -28,7 +28,7 @@ for net in networks:
     else:
         internet_net = net.split(' ')[1].split(":")[0]
 if zerotier_net == '' or internet_net == '':
-    print("failed to find networks")
+    print("无法找到正确的网络")
     assert False
 
 # config ip forward
