@@ -10,12 +10,12 @@
 写了一个简单的python脚本。只需要用户输入自己的zerotier的局域网代码。 （需要root权限）
 
 使用方法：
-···
+```
 apt install -y git python3
 git clone https://github.com/ricardodong/zerotier-vpn-note.git
 cd zerotier-vpn-note
 python3 script.py
-···
+```
 
 如果想要搭建planet服务器来彻底不依赖zerotier的根服务器，可以用现成的docker，参考https://post.smzdm.com/p/apxkx2m7/
 也有一键脚本可用。
