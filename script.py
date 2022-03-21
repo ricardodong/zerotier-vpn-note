@@ -15,11 +15,13 @@ os.system("sysctl -p")
 server_networks = os.popen("ip link show", 'r', 1)
 networks = server_networks.readlines()
 zerotier_net = internet_net = ''
-if len(networks) > 3:
+if len(networks) > 6:
     print("too many networks! can't decide!")
     assert False
 for net in networks:
-    if '127.0.0.1' in net:
+    if 'link/' in net:
+        continue
+    elif 'lo' in net.split(' ')[1]:
         continue
     elif 'zt' in net.split(' ')[1]:
         zerotier_net = net.split(' ')[1].split(":")[0]
