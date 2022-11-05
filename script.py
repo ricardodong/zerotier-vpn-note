@@ -1,9 +1,9 @@
 import os
 
 # install and join zerotier network
-os.system("curl -s https://install.zerotier.com | sudo bash")
-zerotier_network_id = input("请输入你的zerotier 网络 ID (一串16位的字母数字):\n")
-os.system("zerotier-cli join " + zerotier_network_id)
+# os.system("curl -s https://install.zerotier.com | sudo bash")
+# zerotier_network_id = input("请输入你的zerotier 网络 ID (一串16位的字母数字):\n")
+# os.system("zerotier-cli join " + zerotier_network_id)
 
 # enable ip forward
 network_config_file = open("/etc/sysctl.conf", 'a+')
